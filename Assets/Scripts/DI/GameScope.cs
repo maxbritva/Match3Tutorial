@@ -1,4 +1,5 @@
 using Game.Board;
+using Game.Utils;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -12,8 +13,8 @@ namespace DI
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterInstance(_gameBoard);
-            builder.Register<Grid>(Lifetime.Scoped);
-
+            builder.Register<Grid>(Lifetime.Singleton);
+            builder.Register<SetupCamera>(Lifetime.Singleton);
         }
     }
 }
