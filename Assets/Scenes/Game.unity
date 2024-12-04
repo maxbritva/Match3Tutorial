@@ -507,6 +507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 589b84193a9a40deb6b6fe4952d0e9cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isDebugging: 1
   _tileConfig: {fileID: 11400000, guid: 9d97b275c4fc1ef4795f332850feab4e, type: 2}
 --- !u!4 &2034952217
 Transform:

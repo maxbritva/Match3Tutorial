@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Game.GridSystem;
 using Game.Tiles;
 using Game.Utils;
 using UnityEngine;
@@ -9,19 +10,22 @@ namespace Game.Board
 {
     public class GameBoard : MonoBehaviour
     {
-       
+        [SerializeField] private bool _isDebugging;
         [SerializeField] private TileConfig _tileConfig;
         private readonly List<Tile> _tilesToRefill = new List<Tile>();
 
         private Grid _grid;
         private TilePool _tilePool;
         private SetupCamera _setupCamera;
+        private GameDebug _gameDebug;
 
         private void Start()
         {
             _grid.SetupGrid(10,10);
             CreateBoard();
             _setupCamera.SetCamera(_grid.Width, _grid.Height, false);
+            if(_isDebugging)
+                _gameDebug.ShowDebug(transform);
         }
         
 
@@ -46,11 +50,12 @@ namespace Game.Board
         }
 
 
-        [Inject] private void Construct (Grid grid, SetupCamera setupCamera, TilePool pool)
+        [Inject] private void Construct (Grid grid, SetupCamera setupCamera, TilePool pool, GameDebug gameDebug)
         {
             _grid = grid;
             _setupCamera = setupCamera;
             _tilePool = pool;
+            _gameDebug = gameDebug;
         }
     }
 }
