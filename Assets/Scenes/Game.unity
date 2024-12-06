@@ -463,6 +463,7 @@ MonoBehaviour:
   - {fileID: 2079927260}
   _gameBoard: {fileID: 2034952216}
   _loader: {fileID: 2079927261}
+  _blankTilesSetup: {fileID: 1359920802}
 --- !u!4 &983275452
 Transform:
   m_ObjectHideFlags: 0
@@ -478,6 +479,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1359920800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1359920801}
+  - component: {fileID: 1359920802}
+  m_Layer: 0
+  m_Name: BlankGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1359920801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359920800}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2079927262}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1359920802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359920800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be39f5ab3f14a4086d76253ab236e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blankTilesLayout:
+  - xPosition: 0
+    yPosition: 0
+  - xPosition: 0
+    yPosition: 9
+  - xPosition: 9
+    yPosition: 0
+  - xPosition: 9
+    yPosition: 9
 --- !u!1 &2034952215
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +608,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tilePrefab: {fileID: 4682266703600174407, guid: 017b5a63da0c02248b39be7d85adc167, type: 3}
+  _blankPrefab: {fileID: 4682266703600174407, guid: 54a6206bcc5fec7489986cc2e2f7c6c6, type: 3}
+  _blankConfig: {fileID: 11400000, guid: e44a574fc162ff74fbb23cadd6c087e1, type: 2}
   _tileSetConfig: {fileID: 11400000, guid: 863a42642c174874398c1a9612f01c34, type: 2}
 --- !u!4 &2079927262
 Transform:
@@ -567,7 +623,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1359920801}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
