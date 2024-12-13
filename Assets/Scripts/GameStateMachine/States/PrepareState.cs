@@ -17,6 +17,7 @@ namespace GameStateMachine.States
         public void Enter()
         {
             _gameBoard.CreateBoard();
+            _stateSwitcher.SwitchState<PlayerTurnState>();
         }
 
         public void Exit() => Debug.Log("Game was started!");
