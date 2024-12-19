@@ -4,6 +4,7 @@ using Animations;
 using Game.Board;
 using Game.GridSystem;
 using Game.MatchTiles;
+using Game.Tiles;
 using GameStateMachine.States;
 
 namespace GameStateMachine
@@ -16,12 +17,14 @@ namespace GameStateMachine
         private Grid _grid;
         private IAnimation _animation;
         private MatchFinder _matchFinder;
+        private TilePool _tilePool;
 
-        public StateMachine(GameBoard gameBoard, Grid grid, IAnimation animation, MatchFinder matchFinder)
+        public StateMachine(GameBoard gameBoard, Grid grid, IAnimation animation, MatchFinder matchFinder, TilePool tilePool)
         {
             _gameBoard = gameBoard;
             _grid = grid;
             _animation = animation;
+            _tilePool = tilePool;
             _matchFinder = matchFinder;
             _states = new List<IState>()
             {
@@ -29,6 +32,7 @@ namespace GameStateMachine
                 new PlayerTurnState(_grid, this, _animation),
                 new SwapTilesState(_grid, this, _animation, _matchFinder),
                 new RemoveTilesState(grid, this, _animation, _matchFinder),
+                new RefillGridState(grid,this,_animation, _matchFinder, _tilePool, _gameBoard.transform)
             };
             _currentState = _states[0];
             _currentState.Enter();
