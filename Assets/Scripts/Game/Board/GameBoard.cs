@@ -26,6 +26,8 @@ namespace Game.Board
         private IAnimation _animation;
         private MatchFinder _matchFinder;
 
+        public LevelConfig LevelConfig => _levelConfig;
+
         private void Awake()
         {
             _grid.SetupGrid(_levelConfig.Width, _levelConfig.Height);
