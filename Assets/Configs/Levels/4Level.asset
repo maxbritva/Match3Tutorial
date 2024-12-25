@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c53c9d8c478a4f70885266931aba746c, type: 3}
+  m_Name: 4Level
+  m_EditorClassIdentifier: 
+  _blankTilesLayout:
+  - xPosition: 0
+    yPosition: 0
+  - xPosition: 7
+    yPosition: 0
+  - xPosition: 0
+    yPosition: 7
+  - xPosition: 7
+    yPosition: 7
+  _width: 8
+  _height: 8
+  _goalScore: 1000
+  _moves: 10
+  _levelNumber: 4
+  _tileSets: 0
