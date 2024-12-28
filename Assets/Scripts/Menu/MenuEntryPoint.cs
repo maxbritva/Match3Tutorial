@@ -10,13 +10,15 @@ namespace Menu
         private IAsyncSceneLoading _sceneLoading;
         private SetupLevelSequence _setupLevel;
         private LevelSequenceView _sequenceView;
+        private MenuView _menuView;
 
         public MenuEntryPoint(IAsyncSceneLoading sceneLoading, SetupLevelSequence setupLevel,
-            LevelSequenceView sequenceView)
+            LevelSequenceView sequenceView, MenuView menuView)
         {
             _sceneLoading = sceneLoading;
             _setupLevel = setupLevel;
             _sequenceView = sequenceView;
+            _menuView = menuView;
         }
 
         public async void Initialize()
@@ -25,7 +27,7 @@ namespace Menu
            // music menu
            _sequenceView.SetupButtonsView(3);
            _sceneLoading.LoadingIsDone(true);
-           // await animation
+           await _menuView.StartAnimation();
            // button enabled
         }
     }
