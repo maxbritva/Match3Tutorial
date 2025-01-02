@@ -1,18 +1,17 @@
 using Audio;
+using Game.UI;
 using UnityEngine;
 
 namespace GameStateMachine.States
 {
     public class LooseState : IState
     {
-        private AudioManager _audioManager;
+        private EndGamePanelView _endGame;
 
-        public LooseState(AudioManager audioManager) => _audioManager = audioManager;
+        public LooseState(EndGamePanelView endGame) => _endGame = endGame;
 
-        public void Enter()
-        {
-            _audioManager.PlayLoose();
-        }
+        public void Enter() => _endGame.ShowEndGamePanel(false);
+        
         public void Exit()
         { }
     }

@@ -1,18 +1,16 @@
 using Audio;
+using Game.UI;
 using UnityEngine;
 
 namespace GameStateMachine.States
 {
     public class WinState : IState
     {
-        private AudioManager _audioManager;
+        private EndGamePanelView _endGame;
 
-        public WinState(AudioManager audioManager) => _audioManager = audioManager;
+        public WinState(EndGamePanelView endGame) => _endGame = endGame;
 
-        public void Enter()
-        {
-            _audioManager.PlayWin();
-        }
+        public void Enter() => _endGame.ShowEndGamePanel(true);
 
         public void Exit()
         { }

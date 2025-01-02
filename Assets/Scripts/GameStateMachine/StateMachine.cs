@@ -7,6 +7,7 @@ using Game.GridSystem;
 using Game.MatchTiles;
 using Game.Score;
 using Game.Tiles;
+using Game.UI;
 using GameStateMachine.States;
 
 namespace GameStateMachine
@@ -23,9 +24,10 @@ namespace GameStateMachine
         private GameProgress _gameProgress;
         private ScoreCalculator _scoreCalculator;
         private AudioManager _audioManager;
+        private EndGamePanelView _endGame;
 
         public StateMachine(GameBoard gameBoard, Grid grid, IAnimation animation, MatchFinder matchFinder, 
-            TilePool tilePool, GameProgress progress, ScoreCalculator scoreCalculator, AudioManager audioManager)
+            TilePool tilePool, GameProgress progress, ScoreCalculator scoreCalculator, AudioManager audioManager, EndGamePanelView endGame)
         {
             _gameBoard = gameBoard;
             _grid = grid;
@@ -35,6 +37,7 @@ namespace GameStateMachine
             _gameProgress = progress;
             _scoreCalculator = scoreCalculator;
             _audioManager = audioManager;
+            _endGame = endGame;
             _states = new List<IState>()
             {
                 new PrepareState(this, _gameBoard),
@@ -42,8 +45,8 @@ namespace GameStateMachine
                 new SwapTilesState(_grid, this, _animation, _matchFinder, _gameProgress, _audioManager),
                 new RemoveTilesState(grid, this, _animation, _matchFinder, _scoreCalculator, _audioManager),
                 new RefillGridState(grid,this,_animation, _matchFinder, _tilePool, _gameBoard.transform, _gameProgress, _audioManager),
-                new WinState(_audioManager),
-                new LooseState(_audioManager),
+                new WinState(_endGame),
+                new LooseState(_endGame),
             };
             _currentState = _states[0];
             _currentState.Enter();
