@@ -26,4 +26,4 @@ MonoBehaviour:
   _goalScore: 1000
   _moves: 10
   _levelNumber: 2
-  _tileSets: 0
+  _tileSets: 1
