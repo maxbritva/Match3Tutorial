@@ -8,6 +8,7 @@ using Game.MatchTiles;
 using Game.Score;
 using Game.Tiles;
 using Game.UI;
+using Game.Utils;
 using GameStateMachine.States;
 using Levels;
 
@@ -29,11 +30,13 @@ namespace GameStateMachine
         private LevelConfig _levelConfig;
         private BackgroundTilesSetup _backgroundTilesSetup;
         private BlankTilesSetup _blankTilesSetup;
+        private FXPool _fxPool;
 
         public StateMachine(GameBoard gameBoard, Grid grid, IAnimation animation, MatchFinder matchFinder, LevelConfig levelConfig,
-            TilePool tilePool, GameProgress progress, ScoreCalculator scoreCalculator, AudioManager audioManager, 
+            TilePool tilePool, GameProgress progress, ScoreCalculator scoreCalculator, AudioManager audioManager, FXPool fxPool,
             EndGamePanelView endGame, BackgroundTilesSetup backgroundTilesSetup, BlankTilesSetup blankTilesSetup)
         {
+            _fxPool = fxPool;
             _gameBoard = gameBoard;
             _levelConfig = levelConfig;
             _grid = grid;
@@ -51,7 +54,7 @@ namespace GameStateMachine
                 new PrepareState(this, _gameBoard, _levelConfig, backgroundTilesSetup, blankTilesSetup),
                 new PlayerTurnState(_grid, this, _animation, _audioManager),
                 new SwapTilesState(_grid, this, _animation, _matchFinder, _gameProgress, _audioManager),
-                new RemoveTilesState(grid, this, _animation, _matchFinder, _scoreCalculator, _audioManager),
+                new RemoveTilesState(grid, this, _animation, _gameBoard, _matchFinder, _scoreCalculator, _audioManager,_fxPool),
                 new RefillGridState(grid,this,_animation, _matchFinder, _tilePool, _gameBoard.transform, _gameProgress, _audioManager),
                 new WinState(_endGame),
                 new LooseState(_endGame),
