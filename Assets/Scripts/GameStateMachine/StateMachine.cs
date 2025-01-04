@@ -9,6 +9,7 @@ using Game.Score;
 using Game.Tiles;
 using Game.UI;
 using GameStateMachine.States;
+using Levels;
 
 namespace GameStateMachine
 {
@@ -25,22 +26,29 @@ namespace GameStateMachine
         private ScoreCalculator _scoreCalculator;
         private AudioManager _audioManager;
         private EndGamePanelView _endGame;
+        private LevelConfig _levelConfig;
+        private BackgroundTilesSetup _backgroundTilesSetup;
+        private BlankTilesSetup _blankTilesSetup;
 
-        public StateMachine(GameBoard gameBoard, Grid grid, IAnimation animation, MatchFinder matchFinder, 
-            TilePool tilePool, GameProgress progress, ScoreCalculator scoreCalculator, AudioManager audioManager, EndGamePanelView endGame)
+        public StateMachine(GameBoard gameBoard, Grid grid, IAnimation animation, MatchFinder matchFinder, LevelConfig levelConfig,
+            TilePool tilePool, GameProgress progress, ScoreCalculator scoreCalculator, AudioManager audioManager, 
+            EndGamePanelView endGame, BackgroundTilesSetup backgroundTilesSetup, BlankTilesSetup blankTilesSetup)
         {
             _gameBoard = gameBoard;
+            _levelConfig = levelConfig;
             _grid = grid;
             _animation = animation;
             _tilePool = tilePool;
             _matchFinder = matchFinder;
             _gameProgress = progress;
             _scoreCalculator = scoreCalculator;
+            _backgroundTilesSetup = backgroundTilesSetup;
+            _blankTilesSetup = blankTilesSetup;
             _audioManager = audioManager;
             _endGame = endGame;
             _states = new List<IState>()
             {
-                new PrepareState(this, _gameBoard),
+                new PrepareState(this, _gameBoard, _levelConfig, backgroundTilesSetup, blankTilesSetup),
                 new PlayerTurnState(_grid, this, _animation, _audioManager),
                 new SwapTilesState(_grid, this, _animation, _matchFinder, _gameProgress, _audioManager),
                 new RemoveTilesState(grid, this, _animation, _matchFinder, _scoreCalculator, _audioManager),

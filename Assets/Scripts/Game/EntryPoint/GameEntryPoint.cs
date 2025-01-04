@@ -21,8 +21,8 @@ namespace Game.EntryPoint
 {
     public class GameEntryPoint : IInitializable
     {
-        
-        // BG Tile Setup
+
+        private BackgroundTilesSetup _backgroundTilesSetup;
         private LevelConfig _levelConfig;
         private ScoreCalculator _scoreCalculator;
         private BlankTilesSetup _blankTilesSetup;
@@ -45,9 +45,10 @@ namespace Game.EntryPoint
         private bool _isDebugging;
 
         public GameEntryPoint(ScoreCalculator scoreCalculator, BlankTilesSetup blankTilesSetup, GameProgress progress, MatchFinder matchFinder, Grid grid, GameBoard gameBoard, 
-            GameDebug gameDebug, TilePool tilePool, GameData gameData, AudioManager audioManager, IAnimation animation, 
+            GameDebug gameDebug, TilePool tilePool, GameData gameData, AudioManager audioManager, IAnimation animation, BackgroundTilesSetup backgroundTilesSetup,
             GameResourcesLoader resourcesLoader, SetupCamera setupCamera, IAsyncSceneLoading sceneLoading, EndGamePanelView endGame)
         {
+            _backgroundTilesSetup = backgroundTilesSetup;
             _scoreCalculator = scoreCalculator;
             _blankTilesSetup = blankTilesSetup;
             _progress = progress;
@@ -75,8 +76,8 @@ namespace Game.EntryPoint
             // await resources
             _setupCamera.SetCamera(_grid.Width, _grid.Height, false);
             _blankTilesSetup.SetupBlanks(_levelConfig);
-            _stateMachine = new StateMachine(_gameBoard, _grid, _animation, _matchFinder, _tilePool,
-                _progress, _scoreCalculator, _audioManager, _endGame);
+            _stateMachine = new StateMachine(_gameBoard, _grid, _animation, _matchFinder, _levelConfig , _tilePool,
+                _progress, _scoreCalculator, _audioManager, _endGame, _backgroundTilesSetup, _blankTilesSetup);
             _sceneLoading.LoadingIsDone(true);
         }
     }

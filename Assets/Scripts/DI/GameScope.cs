@@ -21,6 +21,7 @@ namespace DI
         [SerializeField] private GameResourcesLoader _loader;
         [SerializeField] private EndGamePanelView _endGame;
         [SerializeField] private GameProgressView _gameProgressView;
+      
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterEntryPoint<GameEntryPoint>();
@@ -37,6 +38,7 @@ namespace DI
             builder.Register<GameProgress>(Lifetime.Singleton);
             builder.Register<ScoreCalculator>(Lifetime.Singleton);
             builder.Register<EndGame>(Lifetime.Singleton);
+            builder.Register<BackgroundTilesSetup>(Lifetime.Singleton);
         }
     }
 }

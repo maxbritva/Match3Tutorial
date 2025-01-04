@@ -4178,6 +4178,9 @@ MonoBehaviour:
   _blankPrefab: {fileID: 4682266703600174407, guid: 54a6206bcc5fec7489986cc2e2f7c6c6, type: 3}
   _blankConfig: {fileID: 11400000, guid: e44a574fc162ff74fbb23cadd6c087e1, type: 2}
   _tileSetConfig: {fileID: 11400000, guid: 863a42642c174874398c1a9612f01c34, type: 2}
+  _backgroundTilePrefab: {fileID: 6479434668439601934, guid: 4e60b516e879ced46b3c98b4283eeca9, type: 3}
+  _darkTile: {fileID: 21300000, guid: 32b3fe26c0d84e947bd6421c00060ea3, type: 3}
+  _lightTile: {fileID: 21300000, guid: 0d02e8cec8623b04f93b43814a632ccd, type: 3}
 --- !u!4 &2079927262
 Transform:
   m_ObjectHideFlags: 0
