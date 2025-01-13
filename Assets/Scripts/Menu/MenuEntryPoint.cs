@@ -3,6 +3,7 @@ using Data;
 using Menu.Levels;
 using Menu.UI;
 using SceneLoading;
+using UnityEngine;
 using VContainer.Unity;
 
 namespace Menu
@@ -29,7 +30,7 @@ namespace Menu
 
         public async void Initialize()
         {
-           await _setupLevel.Setup(_gameData.CurrentLevelIndex);
+            await _setupLevel.Setup(_gameData.CurrentLevelIndex);
            _sequenceView.SetupButtonsView(_gameData.CurrentLevelIndex);
            _audioManager.PlayMenuMusic();
            _sceneLoading.LoadingIsDone(true);

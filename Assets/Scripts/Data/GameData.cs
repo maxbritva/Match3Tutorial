@@ -11,8 +11,8 @@ namespace Data
         
         public GameData()
         {
-            IsEnabledSound = true;
-            CurrentLevelIndex = 1;
+           // IsEnabledSound = true;
+           //using Data.GameData; CurrentLevelIndex = 1;
         }
 
         public void SetCurrentLevelIndex(int index)

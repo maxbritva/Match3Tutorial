@@ -23,7 +23,7 @@ MonoBehaviour:
     yPosition: 7
   _width: 8
   _height: 8
-  _goalScore: 500
+  _goalScore: 50
   _moves: 10
   _levelNumber: 1
   _tileSets: 0
